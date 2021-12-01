@@ -1,0 +1,7 @@
+<div class="row">
+    <div class="col s12 m6 l4" *ngFor="let country of countries | sort | paginate: { itemsPerPage, currentPage: p }">
+        <app-country-details [country]="country"></app-country-details>
+    </div>
+    <pagination-controls *ngIf="countries.length > itemsPerPage" class="col s12 center my-pagination" (click)="scrollTop()" (pageChange)="p = $event"></pagination-controls>
+</div>
+

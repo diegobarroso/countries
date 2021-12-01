@@ -1,0 +1,20 @@
+<h2>By Capital</h2>
+<hr>
+
+<div class="row">
+    <div class="col s12">
+       <app-search  (onEnter)="search($event)"
+                    placeholder="Search by Capital City">
+       </app-search>
+    </div>
+</div>
+
+<hr>
+
+<div class="card-panel deep-purple darken-1 white-text" *ngIf="error">
+    No country with the name {{term}}
+</div>
+
+<div class="row" *ngIf="countries.length>0">
+        <app-card-country [countries]="countries"></app-card-country>
+</div>

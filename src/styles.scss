@@ -1,0 +1,10 @@
+@import '/node_modules/materialize-css/sass/components/color-variables';
+@import './styles/colors';
+$roboto-font-path: './node_modules/materialize-css/fonts/roboto/' !default;
+
+@import '/node_modules/materialize-css/sass/materialize';
+
+.my-pagination .ngx-pagination .current {
+    background: $primary-color;
+    border-radius: 25%;
+  }

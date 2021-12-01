@@ -1,0 +1,63 @@
+<div *ngIf="!country; else countryInfo" class="progress">
+    <div class="indeterminate"></div>
+</div>
+
+
+<ng-template #countryInfo>
+    <h2>
+        <button (click)="goBack()" class="waves-effect waves-light btn">
+            <i class="material-icons left">arrow_back</i>
+            Back
+        </button>
+        <br>
+        {{country.name.common}}
+    </h2>
+    <hr>
+    <ul>
+        <li *ngFor="let spell of country.altSpellings" class="flow-text">{{spell}}</li>
+    </ul>
+
+    <div class="row">
+        <div class="col s12 center">
+            <img class="responsive-img z-depth-2" [src]="country.flags.svg" [alt]="country.name.common">
+        </div>
+        <div class="col s12">
+            <ul class="collection">
+                <li class="collection-item"><div>Capital<span class="secondary-content">{{country.capital}}</span></div></li>
+                <li class="collection-item"><div>Population<span class="secondary-content">{{country.population | number}}</span></div></li>
+                <li class="collection-item"><div>Area<span class="secondary-content">{{country.area | number}} km<sup>2</sup></span></div></li>
+                <li class="collection-item"><div>Region<span class="secondary-content">{{country.region}}</span></div></li>
+                <li class="collection-item"><div>Subregion<span class="secondary-content">{{country.subregion}}</span></div></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" *ngIf="country.borders.length > 0">
+        <div class="col s12">
+            <h3>Borders</h3>
+            <ul class="collection">
+                <li class="collection-item" *ngFor="let border of country.borders">{{border}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="collection">
+                <li class="collection-item"><div>Currency<span class="secondary-content" *ngFor="let item of country.currencies | keyvalue ">{{item.value.name}} ({{item.value.symbol}})</span></div></li>
+                <li class="collection-item"><div>Languages<span class="secondary-content" *ngFor="let item of country.languages | keyvalue ">+{{item.value}}</span></div></li>
+                <li class="collection-item"><div>Landlocked Country<span class="secondary-content">{{country.landlocked ? 'Yes' : 'No'}}</span></div></li>
+                <li class="collection-item"><div>Independent Country<span class="secondary-content">{{country.independent ? 'Yes' : 'No'}}</span></div></li>
+                <li class="collection-item"><div>Country’s driving side<span class="secondary-content">{{country.car.side | titlecase}}</span></div></li>
+                <li class="collection-item"><div>Demonyms<span class="secondary-content">Female: {{country.demonyms.eng.f}} - Male: {{country.demonyms.eng.m}}</span></div></li>
+            </ul>
+        </div>
+        <div class="col s12 center" *ngIf="country.coatOfArms.svg">
+            <img class="responsive-img z-depth-2" [src]="country.coatOfArms.svg" [alt]="country.name.common">
+        </div>
+    </div>
+    <div class="row center">
+        <a [href]="country.maps.googleMaps" target="_blank" class="btn waves-effect waves-light map"><i class="material-icons left">public</i>View Google Map</a>
+        <a [href]="country.maps.openStreetMaps" target="_blank" class="btn waves-effect waves-light map"><i class="material-icons left">public</i>View OpenStreetMap</a>
+    </div>
+    
+</ng-template>
+

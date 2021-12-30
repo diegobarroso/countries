@@ -4,12 +4,17 @@ import { ByNameComponent } from './country/pages/by-name/by-name.component';
 import { ByRegionComponent } from './country/pages/by-region/by-region.component';
 import { ByCapitalComponent } from './country/pages/by-capital/by-capital.component';
 import { ViewCountryComponent } from './country/pages/view-country/view-country.component';
+import { HomeComponent } from './country/pages/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ByNameComponent,
+    component: HomeComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'name',
+    component: ByNameComponent
   },
   {
     path: 'region',

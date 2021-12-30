@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ByCapitalComponent } from './pages/by-capital/by-capital.component';
@@ -13,6 +13,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SortPipe } from './pipes/sort.pipe';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CardCountryComponent,
     CountryDetailsComponent,
     SearchComponent,
-    SortPipe
+    SortPipe,
+    HomeComponent
   ],
   exports: [
     ByCapitalComponent,
@@ -36,6 +38,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     NgxPaginationModule
   ]

@@ -1,0 +1,49 @@
+<h2>Select Country</h2>
+<hr>
+<div class="row mt-5">
+    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="selectCountry()">
+        
+        <!-- Region -->
+        <div class="input-field col s12 mt-5">
+            <select class="region" formControlName="region">
+                <option value="" disabled selected>Choose region</option>
+                <option *ngFor="let region of regions" [value]="region | lowercase">{{region}}</option>
+            </select>
+        </div>
+
+        <!-- Country -->
+        <div class="input-field col s12 mt-5" *ngIf="countries.length > 0">
+            <select class="country" formControlName="country">
+                <option value="" disabled selected>Choose country</option>
+                <option *ngFor="let country of countries | sort" 
+                        [value]="country.cca3"
+                        
+                       >{{country.name.common}}</option>
+            </select>
+        </div>
+
+        <!-- Borders -->
+        <div class="input-field col s12 mt-5" *ngIf="borders.length > 0">
+            <select class="border" formControlName="borders">
+                <option value="" disabled selected>Choose border country</option>
+                <option *ngFor="let border of borders" [value]="border">{{border}}</option>
+            </select>
+        </div>
+
+    </form>
+</div>
+
+<div class="progress" *ngIf="loading">
+    <div class="indeterminate"></div>
+</div>
+
+<div class="row ">
+    <div class="col right">
+        <button type="submit"
+                (click)="selectCountry()"
+                class="btn"
+                [disabled]="!selectedCountry">Select country</button>
+    </div>
+</div>
+    <hr>
+    <pre>{{ myForm.value | json }}</pre>

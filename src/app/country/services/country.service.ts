@@ -8,6 +8,12 @@ import { Country } from '../interfaces/country';
 })
 export class CountryService {
 
+  private _regions: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
+  get regions() {
+    return [...this._regions]
+  }
+
   private baseURL: string = 'https://restcountries.com/v3.1';
   
   constructor(private http: HttpClient) { }

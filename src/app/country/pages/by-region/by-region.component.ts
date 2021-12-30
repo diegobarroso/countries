@@ -15,7 +15,7 @@ import { CountryService } from '../../services/country.service';
 })
 export class ByRegionComponent implements OnInit{
 
-  regions: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  regions: string[] = [];
   activedRegion: string = '';
 
   countries: Country[] = [];
@@ -23,6 +23,8 @@ export class ByRegionComponent implements OnInit{
   constructor(private countryService: CountryService) { }
 
   ngOnInit(): void {
+    this.regions = this.countryService.regions;
+    
     if (localStorage.getItem('byRegion')) {
       this.activateRegion(localStorage.getItem('byRegion')!);
     }

@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~13.0.2",
     "@angular/router": "~13.0.2",
     "@types/materialize-css": "^1.0.11",
+    "cobe": "^0.4.1",
     "materialize-css": "^1.0.0-rc.2",
     "ngx-pagination": "^5.1.1",
     "rxjs": "~6.6.0",

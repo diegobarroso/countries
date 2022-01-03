@@ -31,6 +31,9 @@
             </ul>
         </div>
     </div>
+
+    <app-cobe [position]="country.latlng"></app-cobe>
+
     <div class="row" *ngIf="country.borders.length > 0">
         <div class="col s12">
             <h3>Borders</h3>

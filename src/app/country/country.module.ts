@@ -14,6 +14,7 @@ import { SortPipe } from './pipes/sort.pipe';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HomeComponent } from './pages/home/home.component';
+import { CobeComponent } from './components/cobe/cobe.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HomeComponent } from './pages/home/home.component';
     CountryDetailsComponent,
     SearchComponent,
     SortPipe,
-    HomeComponent
+    HomeComponent,
+    CobeComponent
   ],
   exports: [
     ByCapitalComponent,

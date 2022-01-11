@@ -4,20 +4,23 @@
 
 
 <ng-template #countryInfo>
-    <h2>
+    <div class="container">
+        <h2>
         <button (click)="goBack()" class="waves-effect waves-light btn">
             <i class="material-icons left">arrow_back</i>
             Back
         </button>
         <br>
         {{country.name.common}}
-    </h2>
-    <hr>
-    <ul>
-        <li *ngFor="let spell of country.altSpellings" class="flow-text">{{spell}}</li>
-    </ul>
+        </h2>
+        <hr>
+        <ul>
+            <li *ngFor="let spell of country.altSpellings" class="flow-text">{{spell}}</li>
+        </ul>
+    </div>
+    
 
-    <div class="row">
+    <div class="row container">
         <div class="col s12 center">
             <img class="responsive-img z-depth-2" [src]="country.flags.svg" [alt]="country.name.common">
         </div>
@@ -34,7 +37,7 @@
 
     <app-cobe [position]="country.latlng"></app-cobe>
 
-    <div class="row" *ngIf="country.borders.length > 0">
+    <div class="row container" *ngIf="country.borders.length > 0">
         <div class="col s12">
             <h3>Borders</h3>
             <ul class="collection">
@@ -42,7 +45,7 @@
             </ul>
         </div>
     </div>
-    <div class="row">
+    <div class="row container">
         <div class="col s12">
             <ul class="collection">
                 <li class="collection-item"><div>Currency<span class="secondary-content" *ngFor="let item of country.currencies | keyvalue ">{{item.value.name}} ({{item.value.symbol}})</span></div></li>
@@ -57,6 +60,12 @@
             <img class="responsive-img z-depth-2" [src]="country.coatOfArms.svg" [alt]="country.name.common">
         </div>
     </div>
+
+    <div class="row center">
+        <button class="btn" [disabled]="showMap" (click)="showMap = true">Show Map</button>
+        <app-map [position]="country.latlng" *ngIf="showMap"></app-map>
+    </div>
+
     <div class="row center">
         <a [href]="country.maps.googleMaps" target="_blank" class="btn waves-effect waves-light map"><i class="material-icons left">public</i>View Google Map</a>
         <a [href]="country.maps.openStreetMaps" target="_blank" class="btn waves-effect waves-light map"><i class="material-icons left">public</i>View OpenStreetMap</a>

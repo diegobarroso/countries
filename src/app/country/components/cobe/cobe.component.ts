@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild,  } from '@angular/core';
 // @ts-ignore
 import createGlobe from 'cobe';
 
@@ -7,7 +7,7 @@ import createGlobe from 'cobe';
   templateUrl: './cobe.component.html',
   styles: ['']
 })
-export class CobeComponent implements OnInit {
+export class CobeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('cobe') cobe!: ElementRef<HTMLCanvasElement>;
   @Input('position') position!: number[];
@@ -18,11 +18,10 @@ export class CobeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-       
     const globe = createGlobe(this.cobe, {
       devicePixelRatio: 2,
-      width: 1000,
-      height: 1000,
+      width: 600,
+      height: 600,
       phi: 0,
       theta: 0,
       dark: 0,
@@ -40,15 +39,14 @@ export class CobeComponent implements OnInit {
         // Called on every animation frame.
         // `state` will be an empty object, return updated params.
         state.phi = this.phi
-        this.phi += 0.01
+        this.phi += 0.02
       },
-    })
+    });
+    
   }
 
   ngAfterViewInit(): void {
-    this.context = this.cobe.nativeElement.getContext('2d');
-
-    
+    this.context = this.cobe.nativeElement.getContext('2d');   
   }
 
 }

@@ -15,12 +15,16 @@ import { Country } from '../../interfaces/country';
     img {
       max-width: 50%;
     }
+    button {
+      margin-bottom: .5em;
+    }
   `
   ]
 })
 export class ViewCountryComponent implements OnInit {
 
   country!: Country;
+  showMap: boolean = false;
 
   constructor(private router: Router,
               private location: Location) 
